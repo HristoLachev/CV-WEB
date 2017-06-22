@@ -1,6 +1,8 @@
 package converter;
 
+import java.io.File;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBContext;
@@ -28,7 +30,15 @@ public class JAXBConverter {
 	}
 
 	public SkillsPassport unmarshallEuroPassXML(InputStream inputStream) throws JAXBException {
-		return (SkillsPassport)unmarshaller.unmarshal(inputStream);
+		return (SkillsPassport) unmarshaller.unmarshal(inputStream);
+	}
+
+	public void marshallEuroPassXML(Object element, OutputStream os) throws JAXBException {
+		marshaller.marshal(element, os);
+	}
+
+	public void marshallEuroPassXML(Object element, File os) throws JAXBException {
+		marshaller.marshal(element, os);
 	}
 
 }
