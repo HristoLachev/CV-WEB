@@ -17,11 +17,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.xml.sax.SAXException;
 
-import converter.JAXBConverter;
-import model.xml.IdentificationType;
-import model.xml.LearnerInfoType;
-import model.xml.PersonNameType;
-import model.xml.SkillsPassport;
+import com.cv.converter.JAXBConverter;
+import com.cv.model.xml.IdentificationType;
+import com.cv.model.xml.LearnerInfoType;
+import com.cv.model.xml.PersonNameType;
+import com.cv.model.xml.SkillsPassport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:ConverterTest-context.xml")
