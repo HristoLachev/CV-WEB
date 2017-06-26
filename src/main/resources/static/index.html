@@ -1,10 +1,326 @@
-<!DOCTYPE HTML>
-<html>
-<head> 
-    <title>Getting Started: Serving Web Content</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!DOCTYPE html>
+<html lang="en">
+<!-- Latest compiled and minified CSS -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type='text/javascript' src='script.js'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        window.onload = function () {
+            addOptionsToDays();
+            addOptionsToMonth();
+            createWorkplaceForm();
+            createEducationForm();
+        };
+
+        let addOptionsToDays = function () {
+            let selectElement = $('.day-from');
+            let selectElementTo = $('.day-to');
+            for (let i = 1; i <= 31; i++) {
+                let optionElement = '<option value="' + i + '">' + i + '</option>';
+                selectElement.append(optionElement);
+                selectElementTo.append(optionElement);
+            }
+        };
+
+        let addOptionsToMonth = function () {
+            let selectElement = $('.month-from');
+            let selectElementTo = $('.month-to');
+            for (let i = 1; i <= 12; i++) {
+                let optionElement = '<option value="' + i + '">' + i + '</option>';
+                selectElement.append(optionElement);
+                selectElementTo.append(optionElement);
+            }
+        };
+
+        let createWorkplaceForm = function () {
+            let workPlaceContainer = $('#work-experience');
+            let form = `<div class="work-place-wrapper clearfix" style="border-bottom: 1px solid grey; margin-bottom: 10px;">
+                <h3>From:</h3>
+                <div class="form-group col-xs-4" >
+                    <label for="day-from">Day:</label>
+                    <select class="form-control day-from" name="day-from"></select>
+                </div>
+                <div class="form-group col-xs-4" >
+                    <label for="month-from">Month:</label>
+                    <select class="form-control month-from" name="month-from"></select>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label for="year-from">Year:</label>
+                    <input type="text" class="form-control" name="year-from">
+                </div>
+                <h3>To:</h3>
+                <div class="form-group col-xs-4" >
+                    <label>Day:</label>
+                    <select class="form-control day-to" name="day-to"></select>
+                </div>
+                <div class="form-group col-xs-4" >
+                    <label for="month-from">Month:</label>
+                    <select class="form-control month-to" name="month-to"></select>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>Year:</label>
+                    <input type="text" class="form-control" name="year-to">
+                </div>
+                <h3>Occupation:</h3>
+                <h4>Employee:</h4>
+                 <div class="form-group col-xs-4">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" name="employee-name">
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>City:</label>
+                    <input type="text" class="form-control" name="employee-city">
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>Country:</label>
+                    <input type="text" class="form-control" name="employee-country">
+                </div>
+                <h3>Main activities:</h3>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                    <textarea class="form-control" name="work-description"></textarea>
+                </div>
+            </div>`;
+            workPlaceContainer.append(form);
+            addOptionsToDays();
+            addOptionsToMonth();
+        };
+        let createEducationForm = function () {
+            let educationContainer = $('#education');
+            let form = `<div class="work-place-wrapper clearfix" style="border-bottom: 1px solid grey; margin-bottom: 10px;">
+                <h3>From:</h3>
+                <div class="form-group col-xs-4" >
+                    <label for="day-from">Day:</label>
+                    <select class="form-control day-from" name="day-from-education"></select>
+                </div>
+                <div class="form-group col-xs-4" >
+                    <label for="month-from">Month:</label>
+                    <select class="form-control month-from" name="month-from-education"></select>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label for="year-from">Year:</label>
+                    <input type="text" class="form-control" name="year-from-education">
+                </div>
+                <h3>To:</h3>
+                <div class="form-group col-xs-4" >
+                    <label>Day:</label>
+                    <select class="form-control day-to" name="day-to-education"></select>
+                </div>
+                <div class="form-group col-xs-4" >
+                    <label for="month-from">Month:</label>
+                    <select class="form-control month-to" name="month-to-education"></select>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>Year:</label>
+                    <input type="text" class="form-control" name="year-to-education">
+                </div>
+                <div class="form-group col-xs-12">
+                    <label>Title of qualification awarded:</label>
+                    <input type="text" class="form-control" name="qualification-title">
+                </div>
+                <h3>Organization:</h3>
+                 <div class="form-group col-xs-4">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" name="organization-name">
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>City:</label>
+                    <input type="text" class="form-control" name="organization-city">
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>Country:</label>
+                    <input type="text" class="form-control" name="organization-country">
+                </div>
+                <h3>Main subject / occupation skills covered:</h3>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                    <textarea class="form-control" name="main-subject-education"></textarea>
+                </div>
+            </div>`;
+            educationContainer.append(form);
+            addOptionsToDays();
+            addOptionsToMonth();
+        };
+
+        let submitForm = function() {
+            let form = document.getElementById('form');
+            console.log(form);
+        };
+
+
+    </script>
 </head>
+
 <body>
-    <p>Get your greeting <a href="/greeting">here</a></p>
+
+<div class="container">
+    <form id="form" action="post">
+        <div class="row">
+            <h2>Personal information</h2>
+            <div class="form-group col-xs-12">
+                <label for="first-name">First name:</label>
+                <input type="text" name="firstName" class="form-control" id="first-name">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="surname">Surname:</label>
+                <input type="text" class="form-control" id="surname">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address">
+            </div>
+            <div class="form-group col-xs-4">
+                <label for="postcode">Postcode:</label>
+                <input type="text" class="form-control" id="postcode">
+            </div>
+            <div class="form-group col-xs-8">
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="country">Country:</label>
+                <input type="text" class="form-control" id="country">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="number">Number:</label>
+                <input type="text" class="form-control" id="number">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <h2>Type of application</h2>
+            <div class="form-group col-xs-12">
+                <label for="application-type">Type of application:</label>
+                <select class="form-control" name="application-type" id="application-type">
+                    <option value="job">Job applied for</option>
+                    <option value="position">Position</option>
+                    <option value="preferred-job">Preferred job</option>
+                    <option value="studies">Studies applied for</option>
+                    <option value="personal-statement">Personal statement</option>
+                </select>
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="type-description">Type of application description:</label>
+                <input type="text" class="form-control" id="type-description">
+            </div>
+            <h2>Work experience</h2>
+            <div id="work-experience"></div>
+            <button type="button" onclick="createWorkplaceForm()" class="btn btn-default">Add workplace</button>
+            <h2>Education</h2>
+            <div id="education"></div>
+            <button type="button" onclick="createEducationForm()" class="btn btn-default">Add education</button>
+            <h2>Personal skills</h2>
+            <div class="form-group col-xs-12">
+                <label for="country">Mother tongue:</label>
+                <input type="text" class="form-control" id="mother-tongue">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="country">Other languages:</label>
+                <select class="form-control" id="other-languages" multiple>
+                    <option value="AF">Afrikanns</option>
+                    <option value="SQ">Albanian</option>
+                    <option value="AR">Arabic</option>
+                    <option value="HY">Armenian</option>
+                    <option value="EU">Basque</option>
+                    <option value="BN">Bengali</option>
+                    <option value="BG">Bulgarian</option>
+                    <option value="CA">Catalan</option>
+                    <option value="KM">Cambodian</option>
+                    <option value="ZH">Chinese (Mandarin)</option>
+                    <option value="HR">Croation</option>
+                    <option value="CS">Czech</option>
+                    <option value="DA">Danish</option>
+                    <option value="NL">Dutch</option>
+                    <option value="EN">English</option>
+                    <option value="ET">Estonian</option>
+                    <option value="FJ">Fiji</option>
+                    <option value="FI">Finnish</option>
+                    <option value="FR">French</option>
+                    <option value="KA">Georgian</option>
+                    <option value="DE">German</option>
+                    <option value="EL">Greek</option>
+                    <option value="GU">Gujarati</option>
+                    <option value="HE">Hebrew</option>
+                    <option value="HI">Hindi</option>
+                    <option value="HU">Hungarian</option>
+                    <option value="IS">Icelandic</option>
+                    <option value="ID">Indonesian</option>
+                    <option value="GA">Irish</option>
+                    <option value="IT">Italian</option>
+                    <option value="JA">Japanese</option>
+                    <option value="JW">Javanese</option>
+                    <option value="KO">Korean</option>
+                    <option value="LA">Latin</option>
+                    <option value="LV">Latvian</option>
+                    <option value="LT">Lithuanian</option>
+                    <option value="MK">Macedonian</option>
+                    <option value="MS">Malay</option>
+                    <option value="ML">Malayalam</option>
+                    <option value="MT">Maltese</option>
+                    <option value="MI">Maori</option>
+                    <option value="MR">Marathi</option>
+                    <option value="MN">Mongolian</option>
+                    <option value="NE">Nepali</option>
+                    <option value="NO">Norwegian</option>
+                    <option value="FA">Persian</option>
+                    <option value="PL">Polish</option>
+                    <option value="PT">Portuguese</option>
+                    <option value="PA">Punjabi</option>
+                    <option value="QU">Quechua</option>
+                    <option value="RO">Romanian</option>
+                    <option value="RU">Russian</option>
+                    <option value="SM">Samoan</option>
+                    <option value="SR">Serbian</option>
+                    <option value="SK">Slovak</option>
+                    <option value="SL">Slovenian</option>
+                    <option value="ES">Spanish</option>
+                    <option value="SW">Swahili</option>
+                    <option value="SV">Swedish </option>
+                    <option value="TA">Tamil</option>
+                    <option value="TT">Tatar</option>
+                    <option value="TE">Telugu</option>
+                    <option value="TH">Thai</option>
+                    <option value="BO">Tibetan</option>
+                    <option value="TO">Tonga</option>
+                    <option value="TR">Turkish</option>
+                    <option value="UK">Ukranian</option>
+                    <option value="UR">Urdu</option>
+                    <option value="UZ">Uzbek</option>
+                    <option value="VI">Vietnamese</option>
+                    <option value="CY">Welsh</option>
+                    <option value="XH">Xhosa</option>
+                </select>
+            </div>
+            <h2>Communication skills:</h2>
+            <div class="col-xs-12" style="margin-bottom: 10px;">
+                <textarea class="form-control" name="communication-skills"></textarea>
+            </div>
+            <h2>Organisational / managerial skills:</h2>
+            <div class="col-xs-12" style="margin-bottom: 10px;">
+                <textarea class="form-control" name="organisational-skills"></textarea>
+            </div>
+            <h2>Job-related skills:</h2>
+            <div class="col-xs-12" style="margin-bottom: 10px;">
+                <textarea class="form-control" name="job-skills"></textarea>
+            </div>
+            <h2>Digital competence:</h2>
+            <div class="col-xs-12" style="margin-bottom: 10px;">
+                <textarea class="form-control" name="digital-competence"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+
+        </div>
+    </form>
+</div>
+
+
 </body>
 </html>
