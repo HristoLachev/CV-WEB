@@ -18,16 +18,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.xml.sax.SAXException;
 
 import com.cv.converter.JAXBConverter;
-import com.cv.model.xml.AddressInfoType;
-import com.cv.model.xml.ContactAddressType;
-import com.cv.model.xml.ContactEmailType;
-import com.cv.model.xml.ContactInfoType;
 import com.cv.model.xml.IdentificationType;
 import com.cv.model.xml.LearnerInfoType;
 import com.cv.model.xml.PersonNameType;
 import com.cv.model.xml.SkillsPassport;
-import com.cv.model.xml.TelephoneListType;
-import com.sun.org.apache.xerces.internal.dom.ElementNSImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:ConverterTest-context.xml")
@@ -43,10 +37,6 @@ public class ConverterTest {
 		SkillsPassport passport = converter.unmarshallEuroPassXML(new FileInputStream(x));
 		String firstName = passport.getLearnerInfo().getIdentification().getPersonName().getFirstName();
 		assertEquals("Betty", firstName);
-		IdentificationType info = passport.getLearnerInfo().getIdentification();
-		ContactInfoType contactinfo = info.getContactInfo();
-		TelephoneListType adress = contactinfo.getTelephoneList();
-
 		System.out.println(passport);
 
 	}
