@@ -5,22 +5,25 @@
 // Generated on: 2017.06.22 at 04:21:20 PM EEST 
 //
 
-
 package com.cv.model.xml;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
 
 /**
  * 
- * 				Defines the contact address of an individual.
- * 			
+ * Defines the contact address of an individual.
  * 
- * <p>Java class for ContactAddressType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * Java class for ContactAddressType complex type.
+ * 
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="ContactAddressType">
@@ -39,9 +42,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ContactAddressType")
-public class ContactAddressType
-    extends ContactMethodType
-{
+public class ContactAddressType {
 
+	@XmlElement(name = "Contact")
+	protected AddressInfoType contact;
 
 }

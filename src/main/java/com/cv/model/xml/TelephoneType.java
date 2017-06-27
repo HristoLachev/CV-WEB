@@ -5,18 +5,20 @@
 // Generated on: 2017.06.22 at 04:21:20 PM EEST 
 //
 
-
 package com.cv.model.xml;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for TelephoneType complex type.
+ * <p>
+ * Java class for TelephoneType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="TelephoneType">
@@ -36,8 +38,12 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TelephoneType")
 public class TelephoneType
-    extends ContactMethodType
-{
 
+{
+	@XmlElement(name = "Contact")
+	protected String contact;
+
+	@XmlElement(name = "Use")
+	protected TelephoneUseLabelType use;
 
 }
