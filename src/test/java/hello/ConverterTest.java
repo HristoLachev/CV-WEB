@@ -67,4 +67,16 @@ public class ConverterTest {
 
 	}
 
+	@Test
+	public void allRoundTest() throws FileNotFoundException, JAXBException, InterruptedException {
+		File x = new File("src/test/resources/cv1.xml");
+		SkillsPassport passport = converter.unmarshallEuroPassXML(new FileInputStream(x));
+
+		File outputFile = new File("src/test/resources/ConverterTestOutput");
+		converter.marshallEuroPassXML(passport, System.out);
+		converter.marshallEuroPassXML(passport, outputFile);
+
+		Thread.sleep(3000);
+	}
+
 }
