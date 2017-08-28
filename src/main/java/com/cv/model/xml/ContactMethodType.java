@@ -55,7 +55,7 @@ import javax.xml.bind.annotation.XmlType;
 public abstract class ContactMethodType {
 
     @XmlElement(name = "Contact")
-    protected Object contact;
+    protected String contact;
     @XmlElement(name = "Use")
     protected LabelType use;
 
@@ -67,7 +67,7 @@ public abstract class ContactMethodType {
      *     {@link Object }
      *     
      */
-    public Object getContact() {
+    public String getContact() {
         return contact;
     }
 
@@ -79,7 +79,7 @@ public abstract class ContactMethodType {
      *     {@link Object }
      *     
      */
-    public void setContact(Object value) {
+    public void setContact(String value) {
         this.contact = value;
     }
 

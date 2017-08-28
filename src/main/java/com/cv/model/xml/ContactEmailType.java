@@ -10,6 +10,7 @@ package com.cv.model.xml;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -38,10 +39,20 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ContactEmailType")
+@XmlType(name = "ContactEmailType", propOrder = {
+	    "contact"	    
+	})
 public class ContactEmailType
-    extends ContactMethodType
 {
+	@XmlElement(name = "Contact")
+    protected String contact;
+	
+	public String getContact() {
+		return contact;
+	}
 
+	public void setContact(String value) {
+		this.contact = value;
+	}
 
 }
