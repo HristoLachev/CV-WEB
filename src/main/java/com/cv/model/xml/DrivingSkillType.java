@@ -5,23 +5,28 @@
 // Generated on: 2017.06.22 at 04:21:20 PM EEST 
 //
 
-
 package com.cv.model.xml;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
 
 /**
  * 
- *                 Defines a skill, the description of which is a driving category.
- *                 Note that a reference to an attachment may also be added.
- *             
+ * Defines a skill, the description of which is a driving category. Note that a
+ * reference to an attachment may also be added.
  * 
- * <p>Java class for DrivingSkillType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * Java class for DrivingSkillType complex type.
+ * 
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="DrivingSkillType">
@@ -49,10 +54,55 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DrivingSkillType")
-public class DrivingSkillType
-    extends SkillType
-{
+@XmlType(name = "DrivingSkillType", propOrder = { "description" })
+public class DrivingSkillType {
 
+	@XmlElement(name = "Description")
+	protected List<DrivingSkillType.LicenseType> description;
 
+	public List<LicenseType> getDescription() {
+		return description;
+	}
+
+	public void setDescription(List<LicenseType> description) {
+		this.description = description;
+	}
+
+	//
+	// /**
+	// * Gets the value of the description property.
+	// *
+	// * @return possible object is {@link Object }
+	// *
+	// */
+	// public Drivinglicence getDescription() {
+	// return description;
+	// }
+	//
+	// /**
+	// * Sets the value of the description property.
+	// *
+	// * @param value
+	// * allowed object is {@link Object }
+	// *
+	// */
+	// public void setDescription(Drivinglicence value) {
+	// this.description = value;
+	// }
+	@XmlAccessorType(XmlAccessType.FIELD)
+	@XmlType(name = "", propOrder = { "licence" })
+	public static class LicenseType {
+
+		@XmlElement(name = "Licence")
+		protected Drivinglicence licence;
+
+		public Drivinglicence getLicence() {
+			return licence;
+		}
+
+		public void setLicence(Drivinglicence licence) {
+			this.licence = licence;
+		}
+
+	}
 }

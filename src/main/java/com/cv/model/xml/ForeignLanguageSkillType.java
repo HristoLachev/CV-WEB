@@ -5,22 +5,26 @@
 // Generated on: 2017.06.22 at 04:21:20 PM EEST 
 //
 
-
 package com.cv.model.xml;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
 
 /**
  * 
- *                 Restricts the generic skill type by specifying the data type of the elements that describe the level of knowledge of the language and related linguistic diplomas and/or experiences. 
- *             
+ * Restricts the generic skill type by specifying the data type of the elements
+ * that describe the level of knowledge of the language and related linguistic
+ * diplomas and/or experiences.
  * 
- * <p>Java class for ForeignLanguageSkillType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * Java class for ForeignLanguageSkillType complex type.
+ * 
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="ForeignLanguageSkillType">
@@ -41,10 +45,128 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ForeignLanguageSkillType")
-public class ForeignLanguageSkillType
-    extends SkillType
-{
+@XmlType(name = "ForeignLanguageSkillType", propOrder = { "description", "proficiencyLevel", "acquiredDuring",
+		"verifiedBy", "documentation" })
+public class ForeignLanguageSkillType {
 
+	@XmlElement(name = "Description")
+	protected ForeignLanguageType description;
+
+	@XmlElement(name = "ProficiencyLevel")
+	protected ProficiencyLevelType proficiencyLevel;
+
+	@XmlElement(name = "AcquiredDuring")
+	protected AbstractExperienceListType acquiredDuring;
+
+	@XmlElement(name = "VerifiedBy")
+	protected CertificateListType verifiedBy;
+
+	@XmlElement(name = "Documentation")
+	protected IntraDocumentDocumentationType documentation;
+
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link Object }
+	 * 
+	 */
+	public ForeignLanguageType getDescription() {
+		return description;
+	}
+
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Object }
+	 * 
+	 */
+	public void setDescription(ForeignLanguageType value) {
+		this.description = value;
+	}
+
+	/**
+	 * Gets the value of the proficiencyLevel property.
+	 * 
+	 * @return possible object is {@link Object }
+	 * 
+	 */
+	public ProficiencyLevelType getProficiencyLevel() {
+		return proficiencyLevel;
+	}
+
+	/**
+	 * Sets the value of the proficiencyLevel property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Object }
+	 * 
+	 */
+	public void setProficiencyLevel(ProficiencyLevelType value) {
+		this.proficiencyLevel = value;
+	}
+
+	/**
+	 * Gets the value of the acquiredDuring property.
+	 * 
+	 * @return possible object is {@link AbstractExperienceListType }
+	 * 
+	 */
+	public AbstractExperienceListType getAcquiredDuring() {
+		return acquiredDuring;
+	}
+
+	/**
+	 * Sets the value of the acquiredDuring property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link AbstractExperienceListType }
+	 * 
+	 */
+	public void setAcquiredDuring(AbstractExperienceListType value) {
+		this.acquiredDuring = value;
+	}
+
+	/**
+	 * Gets the value of the verifiedBy property.
+	 * 
+	 * @return possible object is {@link CertificateListType }
+	 * 
+	 */
+	public CertificateListType getVerifiedBy() {
+		return verifiedBy;
+	}
+
+	/**
+	 * Sets the value of the verifiedBy property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link CertificateListType }
+	 * 
+	 */
+	public void setVerifiedBy(CertificateListType value) {
+		this.verifiedBy = value;
+	}
+
+	/**
+	 * Gets the value of the documentation property.
+	 * 
+	 * @return possible object is {@link IntraDocumentDocumentationType }
+	 * 
+	 */
+	public IntraDocumentDocumentationType getDocumentation() {
+		return documentation;
+	}
+
+	/**
+	 * Sets the value of the documentation property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link IntraDocumentDocumentationType }
+	 * 
+	 */
+	public void setDocumentation(IntraDocumentDocumentationType value) {
+		this.documentation = value;
+	}
 
 }

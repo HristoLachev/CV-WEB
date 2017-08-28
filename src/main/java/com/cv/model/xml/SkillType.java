@@ -61,7 +61,7 @@ import javax.xml.bind.annotation.XmlType;
 public abstract class SkillType {
 
     @XmlElement(name = "Description")
-    protected Object description;
+    protected String description;
     @XmlElement(name = "ProficiencyLevel")
     protected Object proficiencyLevel;
     @XmlElement(name = "AcquiredDuring")
@@ -79,7 +79,7 @@ public abstract class SkillType {
      *     {@link Object }
      *     
      */
-    public Object getDescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -91,7 +91,7 @@ public abstract class SkillType {
      *     {@link Object }
      *     
      */
-    public void setDescription(Object value) {
+    public void setDescription(String value) {
         this.description = value;
     }
 

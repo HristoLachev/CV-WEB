@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.jsoup.Jsoup;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ import com.cv.model.xml.IdentificationType;
 import com.cv.model.xml.LearnerInfoType;
 import com.cv.model.xml.PersonNameType;
 import com.cv.model.xml.SkillsPassport;
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:ConverterTest-context.xml")
@@ -68,11 +71,12 @@ public class ConverterTest {
 	}
 
 	@Test
-	public void allRoundTest() throws FileNotFoundException, JAXBException, InterruptedException {
+	public void allRoundTest() throws JAXBException, InterruptedException, IOException {
 		File x = new File("src/test/resources/cv1.xml");
+		File outputFile = new File("src/test/resources/ConverterTestOutput");
+
 		SkillsPassport passport = converter.unmarshallEuroPassXML(new FileInputStream(x));
 
-		File outputFile = new File("src/test/resources/ConverterTestOutput");
 		converter.marshallEuroPassXML(passport, System.out);
 		converter.marshallEuroPassXML(passport, outputFile);
 

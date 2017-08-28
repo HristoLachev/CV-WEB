@@ -1,8 +1,11 @@
 package com.cv.converter;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBContext;
@@ -30,7 +33,13 @@ public class JAXBConverter {
 	}
 
 	public SkillsPassport unmarshallEuroPassXML(InputStream inputStream) throws JAXBException {
-		return (SkillsPassport) unmarshaller.unmarshal(inputStream);
+		Scanner s = new Scanner(inputStream).useDelimiter("\\A");
+		String result = s.hasNext() ? s.next() : "";
+		String replaced = result.replace("<br>", " ").replace("<br />", " ");
+
+		InputStream escapedHTML = new ByteArrayInputStream(replaced.getBytes(StandardCharsets.UTF_8));
+
+		return (SkillsPassport) unmarshaller.unmarshal(escapedHTML);
 	}
 
 	public void marshallEuroPassXML(Object element, OutputStream os) throws JAXBException {

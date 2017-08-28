@@ -5,24 +5,31 @@
 // Generated on: 2017.06.22 at 04:21:20 PM EEST 
 //
 
-
 package com.cv.model.xml;
+
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlType;
-
 
 /**
  * 
- * 				Extends the generic ExperienceType to include information about a learning achievement or a training period. 
- * 				Contains information about the period the learning experience took place and the awarded title, as well as information about the skills acquired, the organisation providing the education, the educational field and level. 
- * 			
+ * Extends the generic ExperienceType to include information about a learning
+ * achievement or a training period. Contains information about the period the
+ * learning experience took place and the awarded title, as well as information
+ * about the skills acquired, the organisation providing the education, the
+ * educational field and level.
  * 
- * <p>Java class for EducationalExperienceType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * Java class for EducationalExperienceType complex type.
+ * 
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="EducationalExperienceType">
@@ -43,146 +50,125 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "EducationalExperienceType", propOrder = {
-    "title",
-    "activities",
-    "organisation",
-    "level",
-    "field"
-})
-public class EducationalExperienceType
-    extends ExperienceType
-{
+@XmlType(name = "EducationalExperienceType", propOrder = { "title", "activities", "organisation", "level", "field" })
+public class EducationalExperienceType extends ExperienceType {
 
-    @XmlElement(name = "Title")
-    protected String title;
-    @XmlElement(name = "Activities")
-    protected String activities;
-    @XmlElement(name = "Organisation")
-    protected OrganisationType organisation;
-    @XmlElement(name = "Level")
-    protected EducationalLevelType level;
-    @XmlElement(name = "Field")
-    protected EducationalFieldType field;
+	@XmlElement(name = "Title")
+	protected String title;
 
-    /**
-     * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTitle() {
-        return title;
-    }
+	@XmlElement(name = "Activities")
+	protected List<String> activities;
 
-    /**
-     * Sets the value of the title property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTitle(String value) {
-        this.title = value;
-    }
+	@XmlElement(name = "Organisation")
+	protected OrganisationType organisation;
+	@XmlElement(name = "Level")
+	protected EducationalLevelType level;
+	@XmlElement(name = "Field")
+	protected EducationalFieldType field;
 
-    /**
-     * Gets the value of the activities property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getActivities() {
-        return activities;
-    }
+	/**
+	 * Gets the value of the title property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getTitle() {
+		return title;
+	}
 
-    /**
-     * Sets the value of the activities property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setActivities(String value) {
-        this.activities = value;
-    }
+	/**
+	 * Sets the value of the title property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setTitle(String value) {
+		this.title = value;
+	}
 
-    /**
-     * Gets the value of the organisation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link OrganisationType }
-     *     
-     */
-    public OrganisationType getOrganisation() {
-        return organisation;
-    }
+	/**
+	 * Gets the value of the activities property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public List<String> getActivities() {
+		return activities;
+	}
 
-    /**
-     * Sets the value of the organisation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link OrganisationType }
-     *     
-     */
-    public void setOrganisation(OrganisationType value) {
-        this.organisation = value;
-    }
+	/**
+	 * Sets the value of the activities property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setActivities(List<String> value) {
+		this.activities = value;
+	}
 
-    /**
-     * Gets the value of the level property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EducationalLevelType }
-     *     
-     */
-    public EducationalLevelType getLevel() {
-        return level;
-    }
+	/**
+	 * Gets the value of the organisation property.
+	 * 
+	 * @return possible object is {@link OrganisationType }
+	 * 
+	 */
+	public OrganisationType getOrganisation() {
+		return organisation;
+	}
 
-    /**
-     * Sets the value of the level property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EducationalLevelType }
-     *     
-     */
-    public void setLevel(EducationalLevelType value) {
-        this.level = value;
-    }
+	/**
+	 * Sets the value of the organisation property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link OrganisationType }
+	 * 
+	 */
+	public void setOrganisation(OrganisationType value) {
+		this.organisation = value;
+	}
 
-    /**
-     * Gets the value of the field property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EducationalFieldType }
-     *     
-     */
-    public EducationalFieldType getField() {
-        return field;
-    }
+	/**
+	 * Gets the value of the level property.
+	 * 
+	 * @return possible object is {@link EducationalLevelType }
+	 * 
+	 */
+	public EducationalLevelType getLevel() {
+		return level;
+	}
 
-    /**
-     * Sets the value of the field property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EducationalFieldType }
-     *     
-     */
-    public void setField(EducationalFieldType value) {
-        this.field = value;
-    }
+	/**
+	 * Sets the value of the level property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link EducationalLevelType }
+	 * 
+	 */
+	public void setLevel(EducationalLevelType value) {
+		this.level = value;
+	}
+
+	/**
+	 * Gets the value of the field property.
+	 * 
+	 * @return possible object is {@link EducationalFieldType }
+	 * 
+	 */
+	public EducationalFieldType getField() {
+		return field;
+	}
+
+	/**
+	 * Sets the value of the field property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link EducationalFieldType }
+	 * 
+	 */
+	public void setField(EducationalFieldType value) {
+		this.field = value;
+	}
 
 }

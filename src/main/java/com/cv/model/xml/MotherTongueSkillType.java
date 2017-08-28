@@ -5,18 +5,20 @@
 // Generated on: 2017.06.22 at 04:21:20 PM EEST 
 //
 
-
 package com.cv.model.xml;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for MotherTongueSkillType complex type.
+ * <p>
+ * Java class for MotherTongueSkillType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="MotherTongueSkillType">
@@ -34,10 +36,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MotherTongueSkillType")
-public class MotherTongueSkillType
-    extends SkillType
-{
+@XmlType(name = "MotherTongueSkillType", propOrder = { "description" })
+public class MotherTongueSkillType {
+	@XmlElement(name = "Description")
+	protected MotherLanguageType description;
 
+	public void setDescription(MotherLanguageType description) {
+		this.description = description;
+	}
+
+	public MotherLanguageType getDescription() {
+		return description;
+	}
 
 }
