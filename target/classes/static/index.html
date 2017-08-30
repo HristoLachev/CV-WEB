@@ -15,92 +15,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         var defaultData = {
-            "documentInfo": {
-                "documentType": "ECV",
-                "bundle": {
-                    "document": []
-                },
-                "creationDate": 1361432840086,
-                "lastUpdateDate": 1433324649414,
-                "generator": "EWA",
-                "comment": "Europass CV",
-                "copyright": null,
-                "europassLogo": true,
-                "xsdversion": "V3.3"
-            },
-            "printingPreferences": {
-                "document": [
-                    {
-                        "field": [
-                            {
-                                "name": "LearnerInfo.Identification.PersonName",
-                                "show": true,
-                                "format": null,
-                                "order": "FIRST_NAME_SURNAME",
-                                "position": null,
-                                "justify": null
-                            },
-                            {
-                                "name": "LearnerInfo.Identification.Demographics.Birthdate",
-                                "show": true,
-                                "format": "numeric/long",
-                                "order": null,
-                                "position": null,
-                                "justify": null
-                            },
-                            {
-                                "name": "LearnerInfo.WorkExperience[0].Period",
-                                "show": true,
-                                "format": "numeric/long",
-                                "order": null,
-                                "position": null,
-                                "justify": null
-                            },
-                            {
-                                "name": "LearnerInfo.WorkExperience[1].Period",
-                                "show": true,
-                                "format": "numeric/long",
-                                "order": null,
-                                "position": null,
-                                "justify": null
-                            },
-                            {
-                                "name": "LearnerInfo.WorkExperience[2].Period",
-                                "show": true,
-                                "format": "numeric/long",
-                                "order": null,
-                                "position": null,
-                                "justify": null
-                            },
-                            {
-                                "name": "LearnerInfo.Education[0].Period",
-                                "show": true,
-                                "format": "numeric/long",
-                                "order": null,
-                                "position": null,
-                                "justify": null
-                            },
-                            {
-                                "name": "LearnerInfo.Education[1].Period",
-                                "show": true,
-                                "format": "numeric/long",
-                                "order": null,
-                                "position": null,
-                                "justify": null
-                            },
-                            {
-                                "name": "LearnerInfo",
-                                "show": true,
-                                "format": null,
-                                "order": "IDENTIFICATION_HEADLINE_WORK_EXPERIENCE_EDUCATION_SKILLS_ACHIEVEMENT_REFERENCE_TO",
-                                "position": null,
-                                "justify": null
-                            }
-                        ],
-                        "type": "ECV"
-                    }
-                ]
-            },
             "learnerInfo": {
                 "identification": {
                     "personName": {
@@ -110,24 +24,31 @@
                     },
                     "contactInfo": {
                         "address": {
-                            "contact": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Contact xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><AddressLine>32 Reading rd</AddressLine><PostalCode>B26 3QJ</PostalCode><Municipality>Birmingham</Municipality><Country><Code>UK</Code><Label>United Kingdom</Label>\n</Country>\n</Contact>",
-                            "use": null
+                            "contact": {
+                                "addressLine": "32 Reading rd",
+                                "addressLine2": null,
+                                "postalCode": "B26 3QJ",
+                                "municipality": "Birmingham",
+                                "country": {
+                                    "code": "UK",
+                                    "label": "United Kingdom"
+                                }
+                            }
                         },
                         "email": {
-                            "contact": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Contact xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">smith@kotmail.com</Contact>",
-                            "use": null
+                            "contact": "smith@kotmail.com"
                         },
                         "telephoneList": {
                             "telephone": [
                                 {
-                                    "contact": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Contact xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">+44 2012345679</Contact>",
+                                    "contact": "+44 2012345679",
                                     "use": {
                                         "code": "home",
                                         "label": "Home"
                                     }
                                 },
                                 {
-                                    "contact": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Contact xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">+44 7123456789</Contact>",
+                                    "contact": "+44 7123456789",
                                     "use": {
                                         "code": "mobile",
                                         "label": "Mobile"
@@ -139,7 +60,7 @@
                         "instantMessagingList": {
                             "instantMessaging": [
                                 {
-                                    "contact": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Contact xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">betty.smith</Contact>",
+                                    "contact": "betty.smith",
                                     "use": {
                                         "code": "aim",
                                         "label": "AOL Instant Messenger (AIM)"
@@ -215,8 +136,16 @@
                                 "name": "British Council",
                                 "contactInfo": {
                                     "address": {
-                                        "contact": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Contact xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><AddressLine>123, Bd Ney</AddressLine><PostalCode>75023</PostalCode><Municipality>Paris</Municipality><Country><Code>FR</Code><Label>France</Label>\n</Country>\n</Contact>",
-                                        "use": null
+                                        "contact": {
+                                            "addressLine": "123, Bd Ney",
+                                            "addressLine2": null,
+                                            "postalCode": "75023",
+                                            "municipality": "Paris",
+                                            "country": {
+                                                "code": "FR",
+                                                "label": "France"
+                                            }
+                                        }
                                     },
                                     "website": null
                                 },
@@ -245,13 +174,21 @@
                                 "code": null,
                                 "label": "Internship"
                             },
-                            "activities": "the next 3 years. Working on the Users Guide for training and the support measures\n",
+                            "activities": "\n- evaluating youth training programmes for SALTO UK and the partnership between the Council of Europe and European Commission - organizing and running a 2 day workshop on non-formal education for Action 5 large scale projects focusing on quality, assessment and recognition - contributing to the steering sroup on training and developing action plans on training for the next 3 years. Working on the Users Guide for training and the support measures\n",
                             "employer": {
                                 "name": "\nEuropean Commission, Youth Unit, DG Education and Culture\n",
                                 "contactInfo": {
                                     "address": {
-                                        "contact": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Contact xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><AddressLine>200, Rue de la Loi</AddressLine><PostalCode>1049</PostalCode><Municipality>Brussels</Municipality><Country><Code>BE</Code><Label>Belgium</Label>\n</Country>\n</Contact>",
-                                        "use": null
+                                        "contact": {
+                                            "addressLine": "200, Rue de la Loi",
+                                            "addressLine2": null,
+                                            "postalCode": "1049",
+                                            "municipality": "Brussels",
+                                            "country": {
+                                                "code": "BE",
+                                                "label": "Belgium"
+                                            }
+                                        }
                                     },
                                     "website": null
                                 },
@@ -288,8 +225,16 @@
                                 "name": "Council of Europe",
                                 "contactInfo": {
                                     "address": {
-                                        "contact": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Contact xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><Municipality>Budapest</Municipality><Country><Code>HU</Code><Label>Hungary</Label>\n</Country>\n</Contact>",
-                                        "use": null
+                                        "contact": {
+                                            "addressLine": null,
+                                            "addressLine2": null,
+                                            "postalCode": null,
+                                            "municipality": "Budapest",
+                                            "country": {
+                                                "code": "HU",
+                                                "label": "Hungary"
+                                            }
+                                        }
                                     },
                                     "website": null
                                 },
@@ -324,8 +269,16 @@
                                 "name": "Brunel University",
                                 "contactInfo": {
                                     "address": {
-                                        "contact": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Contact xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><Municipality>London</Municipality><Country><Code>UK</Code><Label>United Kingdom</Label>\n</Country>\n</Contact>",
-                                        "use": null
+                                        "contact": {
+                                            "addressLine": null,
+                                            "addressLine2": null,
+                                            "postalCode": null,
+                                            "municipality": "London",
+                                            "country": {
+                                                "code": "UK",
+                                                "label": "United Kingdom"
+                                            }
+                                        }
                                     },
                                     "website": null
                                 }
@@ -352,13 +305,23 @@
                             "description": null,
                             "documentation": null,
                             "title": "Bachelor of Science in Sociology and Psychology",
-                            "activities": "- research methods\n",
+                            "activities": [
+                                "\n- sociology of risk - sociology of scientific knowledge / information society - anthropology E-learning and Psychology - research methods\n"
+                            ],
                             "organisation": {
                                 "name": "Brunel University",
                                 "contactInfo": {
                                     "address": {
-                                        "contact": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Contact xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><Municipality>London</Municipality><Country><Code>UK</Code><Label>United Kingdom</Label>\n</Country>\n</Contact>",
-                                        "use": null
+                                        "contact": {
+                                            "addressLine": null,
+                                            "addressLine2": null,
+                                            "postalCode": null,
+                                            "municipality": "London",
+                                            "country": {
+                                                "code": "UK",
+                                                "label": "United Kingdom"
+                                            }
+                                        }
                                     },
                                     "website": null
                                 }
@@ -373,19 +336,27 @@
                         "motherTongueList": {
                             "motherTongue": [
                                 {
-                                    "description": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Description xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>en</Code><Label>English</Label>\n</Description>",
-                                    "proficiencyLevel": null,
-                                    "acquiredDuring": null,
-                                    "verifiedBy": null,
-                                    "documentation": null
+                                    "description": {
+                                        "code": "en",
+                                        "label": "English"
+                                    }
                                 }
                             ]
                         },
                         "foreignLanguageList": {
                             "foreignLanguage": [
                                 {
-                                    "description": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Description xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>fr</Code><Label>French</Label>\n</Description>",
-                                    "proficiencyLevel": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<ProficiencyLevel xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><Listening>C1</Listening><Reading>C2</Reading><SpokenInteraction>B2</SpokenInteraction><SpokenProduction>C1</SpokenProduction><Writing>C2</Writing>\n</ProficiencyLevel>",
+                                    "description": {
+                                        "code": "fr",
+                                        "label": "French"
+                                    },
+                                    "proficiencyLevel": {
+                                        "listening": "C1",
+                                        "reading": "C2",
+                                        "spokenInteraction": "B2",
+                                        "spokenProduction": "C1",
+                                        "writing": "C2"
+                                    },
                                     "acquiredDuring": null,
                                     "verifiedBy": {
                                         "certificate": [
@@ -400,8 +371,17 @@
                                     "documentation": null
                                 },
                                 {
-                                    "description": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Description xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>de</Code><Label>German</Label>\n</Description>",
-                                    "proficiencyLevel": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<ProficiencyLevel xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><Listening>A2</Listening><Reading>A2</Reading><SpokenInteraction>A2</SpokenInteraction><SpokenProduction>A2</SpokenProduction><Writing>A2</Writing>\n</ProficiencyLevel>",
+                                    "description": {
+                                        "code": "de",
+                                        "label": "German"
+                                    },
+                                    "proficiencyLevel": {
+                                        "listening": "A2",
+                                        "reading": "A2",
+                                        "spokenInteraction": "A2",
+                                        "spokenProduction": "A2",
+                                        "writing": "A2"
+                                    },
                                     "acquiredDuring": null,
                                     "verifiedBy": {
                                         "certificate": [
@@ -419,14 +399,14 @@
                         }
                     },
                     "communication": {
-                        "description": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Description xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n- team work: I have worked in various types of teams from research teams to national league hockey. For 2 years I coached my university hockey team<br/>- mediating skills: I work on the borders between young people, youth trainers, youth policy and researchers, for example running a 3 day workshop at CoE Symposium ‘Youth Actor of Social Change’, and my continued work on youth training programmes<br/>- intercultural skills: I am experienced at working in a European dimension such as being a rapporteur at the CoE Budapest ‘youth against violence seminar’ and working with refugees.\n</Description>",
+                        "description": "\n- team work: I have worked in various types of teams from research teams to national league hockey. For 2 years I coached my university hockey team - mediating skills: I work on the borders between young people, youth trainers, youth policy and researchers, for example running a 3 day workshop at CoE Symposium ‘Youth Actor of Social Change’, and my continued work on youth training programmes - intercultural skills: I am experienced at working in a European dimension such as being a rapporteur at the CoE Budapest ‘youth against violence seminar’ and working with refugees.\n",
                         "proficiencyLevel": null,
                         "acquiredDuring": null,
                         "verifiedBy": null,
                         "documentation": null
                     },
                     "organisational": {
-                        "description": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Description xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n- whilst working for a Brussels based refugee NGO ‘Convivial’ I organized a ‘Civil Dialogue’<br/>between refugees and civil servants at the European Commission 20th June 2002<br/>- during my PhD I organised a seminar series on research methods\n</Description>",
+                        "description": "\n- whilst working for a Brussels based refugee NGO ‘Convivial’ I organized a ‘Civil Dialogue’ between refugees and civil servants at the European Commission 20th June 2002 - during my PhD I organised a seminar series on research methods\n",
                         "proficiencyLevel": null,
                         "acquiredDuring": null,
                         "verifiedBy": null,
@@ -434,21 +414,21 @@
                     },
                     "jobRelated": null,
                     "computer": {
-                        "description": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Description xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n- competent with most Microsoft Office programmes<br/>- experience with HTML\n</Description>",
+                        "description": "\n- competent with most Microsoft Office programmes - experience with HTML\n",
                         "proficiencyLevel": null,
                         "acquiredDuring": null,
                         "verifiedBy": null,
                         "documentation": null
                     },
                     "driving": {
-                        "description": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Description xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><Licence>A</Licence><Licence>B</Licence>\n</Description>",
-                        "proficiencyLevel": null,
-                        "acquiredDuring": null,
-                        "verifiedBy": null,
-                        "documentation": null
+                        "description": [
+                            {
+                                "licence": "B"
+                            }
+                        ]
                     },
                     "other": {
-                        "description": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Description xmlns=\"http://europass.cedefop.europa.eu/Europass\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\nCreating pieces of Art and visiting Modern Art galleries. Enjoy all sports particularly hockey, football and running. Love to travel and experience different cultures.\n</Description>",
+                        "description": "\nCreating pieces of Art and visiting Modern Art galleries. Enjoy all sports particularly hockey, football and running. Love to travel and experience different cultures.\n",
                         "proficiencyLevel": null,
                         "acquiredDuring": null,
                         "verifiedBy": null,
@@ -478,15 +458,74 @@
             addOptionsToMonth();
             let workPlaceList = defaultData.learnerInfo.workExperienceList.workExperience;
             for (let i = 0 ; i < workPlaceList.length; i++) {
-                createWorkplaceForm(workPlaceList[i]);
+                createWorkplaceForm(workPlaceList[i], i);
             }
-            createEducationForm();
+            let educationList = defaultData.learnerInfo.educationList.education;
+            for (let i = 0 ; i < educationList.length; i++) {
+                createEducationForm(educationList[i], i);
+            }
+            //let motherTongueList = defaultData.learnerInfo.skills.linguistic.linguistic.motherTongue;
+
             addValueTOFields();
         };
 
         let addValueTOFields = function() {
             let firstNameInput = document.getElementById('first-name');
             firstNameInput.value = defaultData.learnerInfo.identification.personName.firstName;
+            document.getElementById('surname').value = defaultData.learnerInfo.identification.personName.surname;
+            document.getElementById('address').value = defaultData.learnerInfo.identification.contactInfo.address.contact.addressLine;
+            document.getElementById('postcode').value = defaultData.learnerInfo.identification.contactInfo.address.contact.postalCode;
+            document.getElementById('city').value = defaultData.learnerInfo.identification.contactInfo.address.contact.municipality;
+            document.getElementById('countryLabel').value = defaultData.learnerInfo.identification.contactInfo.address.contact.country.label;
+            document.getElementById('countryCode').value = defaultData.learnerInfo.identification.contactInfo.address.contact.country.code;
+            document.getElementById('number').value = defaultData.learnerInfo.identification.contactInfo.telephoneList.telephone[0].contact;
+            document.getElementById('email').value = defaultData.learnerInfo.identification.contactInfo.email.contact;
+            document.getElementById('application-type').value = defaultData.learnerInfo.headline.type.code;
+            document.getElementById('type-description').value = defaultData.learnerInfo.headline.description.label;
+            //document.getElementById('mother-tongue').value = defaultData.learnerInfo.skills.linguistic.linguistic.motherTongue;
+        };
+
+        let submitForm = function() {
+                
+              $.ajax({
+                type : "post",
+                contentType : "application/json; charset=utf-8",
+                url : "passport",
+                data : JSON.stringify({file: defaultData}),
+                dataType : 'json',
+                timeout : 100000,
+                success : function(data) {
+                    console.log("SUCCESS: ", data);
+
+                },
+                error : function(e) {
+                    console.log("ERROR: ", e);
+                },
+                done : function(e) {
+                    console.log("DONE");
+                }
+            });
+           // getAllWorplaces();
+//            defaultData.learnerInfo.identification.personName.surname = document.getElementById('surname').value;
+//            defaultData.learnerInfo.identification.contactInfo.address.contact.addressLine = document.getElementById('address').value;
+//            defaultData.learnerInfo.identification.contactInfo.address.contact.postalCode =  document.getElementById('postcode').value;
+//            defaultData.learnerInfo.identification.contactInfo.address.contact.municipality = document.getElementById('city').value;
+//            defaultData.learnerInfo.identification.contactInfo.address.contact.country.label = document.getElementById('countryLabel').value;
+//            defaultData.learnerInfo.identification.contactInfo.address.contact.country.code = document.getElementById('countryCode').value;
+//            defaultData.learnerInfo.identification.contactInfo.telephoneList.telephone[0].contact =  document.getElementById('number').value;
+//            defaultData.learnerInfo.identification.contactInfo.email.contact = document.getElementById('email').value;
+//            defaultData.learnerInfo.headline.type.code = document.getElementById('application-type').value;
+//            defaultData.learnerInfo.headline.description.label = document.getElementById('type-description').value;
+            //defaultData.learnerInfo.skills.linguistic.linguistic.motherTongue = document.getElementById('mother-tongue').value;
+
+//            console.log(defaultData);
+        };
+
+        let getAllWorplaces = function() {
+            let workPlaces = document.getElementsByName('workplace-form');
+            console.dir(workPlaces);
+            console.log(workPlaces[0].employeeName);
+
         };
 
         let addOptionsToDays = function () {
@@ -509,9 +548,9 @@
             }
         };
 
-        let createWorkplaceForm = function (workPlace) {
+        let createWorkplaceForm = function (workPlace, index) {
             let workPlaceContainer = $('#work-experience');
-            let form = `<div class="work-place-wrapper clearfix" style="border-bottom: 1px solid grey; margin-bottom: 10px;">
+            let form = `<div class="work-place-wrapper clearfix" style="border-bottom: 1px solid grey; margin-bottom: 10px;" id="workplace-${{index}}">
                 <h3>From:</h3>
                 <div class="form-group col-xs-4" >
                     <label for="day-from">Day:</label>
@@ -542,28 +581,28 @@
                 <h4>Employee:</h4>
                  <div class="form-group col-xs-4">
                     <label>Name:</label>
-                    <input type="text" class="form-control" name="employee-name" value="${workPlace.employer.name}">
+                    <input type="text" class="form-control" name="employeeName" value="${workPlace ? workPlace.employer.name : ''}">
                 </div>
                 <div class="form-group col-xs-4">
                     <label>City:</label>
-                    <input type="text" class="form-control" name="employee-city">
+                    <input type="text" class="form-control" name="employee-city" value="${workPlace ? workPlace.employer.contactInfo.address.contact.municipality : ''}">
                 </div>
                 <div class="form-group col-xs-4">
                     <label>Country:</label>
-                    <input type="text" class="form-control" name="employee-country">
+                    <input type="text" class="form-control" name="employee-country" value="${workPlace ? workPlace.employer.contactInfo.address.contact.country.label : ''}">
                 </div>
                 <h3>Main activities:</h3>
                 <div class="col-xs-12" style="margin-bottom: 10px;">
-                    <textarea class="form-control" name="work-description"></textarea>
+                    <textarea class="form-control" name="work-description">${workPlace ? workPlace.activities : ''}</textarea>
                 </div>
             </div>`;
             workPlaceContainer.append(form);
             addOptionsToDays();
             addOptionsToMonth();
         };
-        let createEducationForm = function () {
+        let createEducationForm = function (education, index) {
             let educationContainer = $('#education');
-            let form = `<div class="work-place-wrapper clearfix" style="border-bottom: 1px solid grey; margin-bottom: 10px;">
+            let form = `<div class="work-place-wrapper clearfix" name="workplace-form" style="border-bottom: 1px solid grey; margin-bottom: 10px;" id="education-${{index}}">
                 <h3>From:</h3>
                 <div class="form-group col-xs-4" >
                     <label for="day-from">Day:</label>
@@ -592,24 +631,24 @@
                 </div>
                 <div class="form-group col-xs-12">
                     <label>Title of qualification awarded:</label>
-                    <input type="text" class="form-control" name="qualification-title">
+                    <input type="text" class="form-control" name="qualification-title" value="${education.title}">
                 </div>
                 <h3>Organization:</h3>
                  <div class="form-group col-xs-4">
                     <label>Name:</label>
-                    <input type="text" class="form-control" name="organization-name">
+                    <input type="text" class="form-control" name="organization-name" value="${education.organisation.name}">
                 </div>
                 <div class="form-group col-xs-4">
                     <label>City:</label>
-                    <input type="text" class="form-control" name="organization-city">
+                    <input type="text" class="form-control" name="organization-city" value="${education.organisation.contactInfo.address.contact.municipality}">
                 </div>
                 <div class="form-group col-xs-4">
                     <label>Country:</label>
-                    <input type="text" class="form-control" name="organization-country">
+                    <input type="text" class="form-control" name="organization-country" value="${education.organisation.contactInfo.address.contact.country.label}">
                 </div>
                 <h3>Main subject / occupation skills covered:</h3>
                 <div class="col-xs-12" style="margin-bottom: 10px;">
-                    <textarea class="form-control" name="main-subject-education"></textarea>
+                    <textarea class="form-control" name="main-subject-education">${education.activities || ''}</textarea>
                 </div>
             </div>`;
             educationContainer.append(form);
@@ -617,17 +656,17 @@
             addOptionsToMonth();
         };
 
-        let submitForm = function() {
-            let form = document.getElementById('form');
-            console.log(form);
-        };
+//        let submitForm = function() {
+//            let form = document.getElementById('form');
+//            console.log(form);
+//        };
     </script>
 </head>
 
 <body>
 
 <div class="container">
-    <form id="form" action="post">
+    <form id="form" method="POST">
         <div class="row">
             <h2>Personal information</h2>
             <div class="form-group col-xs-12">
@@ -650,9 +689,13 @@
                 <label for="city">City:</label>
                 <input type="text" class="form-control" id="city">
             </div>
-            <div class="form-group col-xs-12">
-                <label for="country">Country:</label>
-                <input type="text" class="form-control" id="country">
+            <div class="form-group col-xs-4">
+                <label for="countryCode">Country code:</label>
+                <input type="text" class="form-control" id="countryCode">
+            </div>
+            <div class="form-group col-xs-8">
+                <label for="countryLabel">Country:</label>
+                <input type="text" class="form-control" id="countryLabel">
             </div>
             <div class="form-group col-xs-12">
                 <label for="number">Number:</label>
@@ -666,11 +709,11 @@
             <div class="form-group col-xs-12">
                 <label for="application-type">Type of application:</label>
                 <select class="form-control" name="application-type" id="application-type">
-                    <option value="job">Job applied for</option>
+                    <option value="job_applied_for">Job applied for</option>
                     <option value="position">Position</option>
-                    <option value="preferred-job">Preferred job</option>
+                    <option value="preferred_job">Preferred job</option>
                     <option value="studies">Studies applied for</option>
-                    <option value="personal-statement">Personal statement</option>
+                    <option value="personal_statement">Personal statement</option>
                 </select>
             </div>
             <div class="form-group col-xs-12">
@@ -685,11 +728,11 @@
             <button type="button" onclick="createEducationForm()" class="btn btn-default">Add education</button>
             <h2>Personal skills</h2>
             <div class="form-group col-xs-12">
-                <label for="country">Mother tongue:</label>
+                <label for="mother-tongue">Mother tongue:</label>
                 <input type="text" class="form-control" id="mother-tongue">
             </div>
             <div class="form-group col-xs-12">
-                <label for="country">Other languages:</label>
+                <label for="other-languages">Other languages:</label>
                 <select class="form-control" id="other-languages" multiple>
                     <option value="AF">Afrikanns</option>
                     <option value="SQ">Albanian</option>
@@ -781,7 +824,7 @@
             <div class="col-xs-12" style="margin-bottom: 10px;">
                 <textarea class="form-control" name="digital-competence"></textarea>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default"  onclick="submitForm()">Submit</button>
 
         </div>
     </form>
