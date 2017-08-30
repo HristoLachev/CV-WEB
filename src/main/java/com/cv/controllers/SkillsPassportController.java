@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cv.converter.JAXBConverter;
 import com.cv.model.xml.SkillsPassport;
+import com.google.gson.Gson;
 
 @Controller
 public class SkillsPassportController {
@@ -23,7 +24,7 @@ public class SkillsPassportController {
 
 	@PostMapping(value = "/passport", produces = "application/json")
 	@ResponseBody
-	public SkillsPassport getPassport(@RequestParam("file") MultipartFile file, Model model) throws IOException {
+	public String getPassport(@RequestParam("file") MultipartFile file, Model model) throws IOException {
 		SkillsPassport pasport = null;
 		try {
 			pasport = converter.unmarshallEuroPassXML(file.getInputStream());
@@ -31,7 +32,9 @@ public class SkillsPassportController {
 			pasport = new SkillsPassport();
 			e.printStackTrace();
 		}
-		return pasport;
+		Gson gson = new Gson();
+		String passportInJSON = gson.toJson(pasport);
+		return passportInJSON;
 
 	}
 }
