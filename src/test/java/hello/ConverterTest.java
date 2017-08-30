@@ -25,6 +25,7 @@ import com.cv.model.xml.PersonNameType;
 import com.cv.model.xml.SkillsPassport;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
+import com.google.gson.Gson;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:ConverterTest-context.xml")
@@ -41,6 +42,19 @@ public class ConverterTest {
 		String firstName = passport.getLearnerInfo().getIdentification().getPersonName().getFirstName();
 		assertEquals("Betty", firstName);
 		System.out.println(passport);
+
+	}
+
+	@Test
+	public void fromXMLtoJSON() throws ParserConfigurationException, SAXException, IOException, JAXBException {
+		File x = new File("src/test/resources/cv1.xml");
+		SkillsPassport passport = converter.unmarshallEuroPassXML(new FileInputStream(x));
+		String firstName = passport.getLearnerInfo().getIdentification().getPersonName().getFirstName();
+		assertEquals("Betty", firstName);
+		System.out.println(passport);
+		Gson gson = new Gson();
+		String passportInJSON = gson.toJson(passport);
+		System.out.println(passportInJSON);
 
 	}
 
