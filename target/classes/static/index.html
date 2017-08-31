@@ -456,7 +456,12 @@
         window.onload = function () {
             addOptionsToDays();
             addOptionsToMonth();
-            let workPlaceList = defaultData.learnerInfo.workExperienceList.workExperience;
+            addDataToFileds();
+            
+        };
+        
+        let addDataToFileds = function() {
+        	let workPlaceList = defaultData.learnerInfo.workExperienceList.workExperience;
             for (let i = 0 ; i < workPlaceList.length; i++) {
                 createWorkplaceForm(workPlaceList[i], i);
             }
@@ -482,20 +487,42 @@
             document.getElementById('email').value = defaultData.learnerInfo.identification.contactInfo.email.contact;
             document.getElementById('application-type').value = defaultData.learnerInfo.headline.type.code;
             document.getElementById('type-description').value = defaultData.learnerInfo.headline.description.label;
-            //document.getElementById('mother-tongue').value = defaultData.learnerInfo.skills.linguistic.linguistic.motherTongue;
+
+          document.getElementById('mother-tongue').value = defaultData.learnerInfo.skills.linguistic.motherTongueList.motherTongue[0].description.label;
+                        document.getElementById('communication').value = defaultData.learnerInfo.skills.communication.description;
+                        document.getElementById('organisational').value = defaultData.learnerInfo.skills.organisational.description;
+                        document.getElementById('computer').value = defaultData.learnerInfo.skills.computer.description;
         };
 
         let submitForm = function() {
+        	
+        	defaultData.learnerInfo.identification.personName.firstName = document.getElementById('first-name').value
+        	;
+            defaultData.learnerInfo.identification.personName.surname = document.getElementById('surname').value;
+            defaultData.learnerInfo.identification.contactInfo.address.contact.addressLine = document.getElementById('address').value;
+            defaultData.learnerInfo.identification.contactInfo.address.contact.postalCode =  document.getElementById('postcode').value;
+            defaultData.learnerInfo.identification.contactInfo.address.contact.municipality = document.getElementById('city').value;
+            defaultData.learnerInfo.identification.contactInfo.address.contact.country.label = document.getElementById('countryLabel').value;
+            defaultData.learnerInfo.identification.contactInfo.address.contact.country.code = document.getElementById('countryCode').value;
+            defaultData.learnerInfo.identification.contactInfo.telephoneList.telephone[0].contact =  document.getElementById('number').value;
+            defaultData.learnerInfo.identification.contactInfo.email.contact = document.getElementById('email').value;
+            defaultData.learnerInfo.headline.type.code = document.getElementById('application-type').value;
+            defaultData.learnerInfo.headline.description.label = document.getElementById('type-description').value;
+            defaultData.learnerInfo.skills.linguistic.motherTongueList.motherTongue[0].description.label = document.getElementById('mother-tongue').value;
+            defaultData.learnerInfo.skills.communication.description = document.getElementById('communication').value;
+            defaultData.learnerInfo.skills.organisational.description = document.getElementById('organisational').value;
+            defaultData.learnerInfo.skills.computer.description =  document.getElementById('computer').value;
                 
               $.ajax({
                 type : "post",
                 contentType : "application/json; charset=utf-8",
-                url : "passport",
+                url : "download",
                 data : JSON.stringify({file: defaultData}),
                 dataType : 'json',
                 timeout : 100000,
                 success : function(data) {
                     console.log("SUCCESS: ", data);
+                  //  document.getElementById('my_iframe').src = data;
 
                 },
                 error : function(e) {
@@ -655,17 +682,49 @@
             addOptionsToDays();
             addOptionsToMonth();
         };
+        
+		let submitFile = function() {
+            let files = document.getElementById('file-input').files;
+            let formData = new FormData();
+            formData.append('file', files[0]);
 
-//        let submitForm = function() {
-//            let form = document.getElementById('form');
-//            console.log(form);
-//        };
+            $.ajax({
+                type: "post",
+               	processData: false,  // tell jQuery not to process the data
+                contentType: false,
+                url: "upload",
+                data: formData,
+   				success: function (data) {
+   					defaultData = data;
+   					addDataToFileds();
+   					
+                 console.log("SUCCESS: ", data);
+                },
+                error: function (e) {
+                    console.log("ERROR: ", e);
+                },
+                done: function (e) {
+                    console.log("DONE");
+                }
+            });
+        }
     </script>
 </head>
 
 <body>
 
 <div class="container">
+<iframe id="my_iframe" style="display:none;"></iframe>
+		
+			<div class="row">
+			 <div class="form-group col-xs-12">
+			 	<label for="file-input">File to upload:</label>
+				<input class="form-control" type="file" name="file" id="file-input">
+			</div>
+				<div class="col-xs-12"><button class="btn" value="Upload" type="button" onclick="submitFile()" >Upload file</button>
+			</div>
+		
+		
     <form id="form" method="POST">
         <div class="row">
             <h2>Personal information</h2>
@@ -731,100 +790,21 @@
                 <label for="mother-tongue">Mother tongue:</label>
                 <input type="text" class="form-control" id="mother-tongue">
             </div>
-            <div class="form-group col-xs-12">
-                <label for="other-languages">Other languages:</label>
-                <select class="form-control" id="other-languages" multiple>
-                    <option value="AF">Afrikanns</option>
-                    <option value="SQ">Albanian</option>
-                    <option value="AR">Arabic</option>
-                    <option value="HY">Armenian</option>
-                    <option value="EU">Basque</option>
-                    <option value="BN">Bengali</option>
-                    <option value="BG">Bulgarian</option>
-                    <option value="CA">Catalan</option>
-                    <option value="KM">Cambodian</option>
-                    <option value="ZH">Chinese (Mandarin)</option>
-                    <option value="HR">Croation</option>
-                    <option value="CS">Czech</option>
-                    <option value="DA">Danish</option>
-                    <option value="NL">Dutch</option>
-                    <option value="EN">English</option>
-                    <option value="ET">Estonian</option>
-                    <option value="FJ">Fiji</option>
-                    <option value="FI">Finnish</option>
-                    <option value="FR">French</option>
-                    <option value="KA">Georgian</option>
-                    <option value="DE">German</option>
-                    <option value="EL">Greek</option>
-                    <option value="GU">Gujarati</option>
-                    <option value="HE">Hebrew</option>
-                    <option value="HI">Hindi</option>
-                    <option value="HU">Hungarian</option>
-                    <option value="IS">Icelandic</option>
-                    <option value="ID">Indonesian</option>
-                    <option value="GA">Irish</option>
-                    <option value="IT">Italian</option>
-                    <option value="JA">Japanese</option>
-                    <option value="JW">Javanese</option>
-                    <option value="KO">Korean</option>
-                    <option value="LA">Latin</option>
-                    <option value="LV">Latvian</option>
-                    <option value="LT">Lithuanian</option>
-                    <option value="MK">Macedonian</option>
-                    <option value="MS">Malay</option>
-                    <option value="ML">Malayalam</option>
-                    <option value="MT">Maltese</option>
-                    <option value="MI">Maori</option>
-                    <option value="MR">Marathi</option>
-                    <option value="MN">Mongolian</option>
-                    <option value="NE">Nepali</option>
-                    <option value="NO">Norwegian</option>
-                    <option value="FA">Persian</option>
-                    <option value="PL">Polish</option>
-                    <option value="PT">Portuguese</option>
-                    <option value="PA">Punjabi</option>
-                    <option value="QU">Quechua</option>
-                    <option value="RO">Romanian</option>
-                    <option value="RU">Russian</option>
-                    <option value="SM">Samoan</option>
-                    <option value="SR">Serbian</option>
-                    <option value="SK">Slovak</option>
-                    <option value="SL">Slovenian</option>
-                    <option value="ES">Spanish</option>
-                    <option value="SW">Swahili</option>
-                    <option value="SV">Swedish </option>
-                    <option value="TA">Tamil</option>
-                    <option value="TT">Tatar</option>
-                    <option value="TE">Telugu</option>
-                    <option value="TH">Thai</option>
-                    <option value="BO">Tibetan</option>
-                    <option value="TO">Tonga</option>
-                    <option value="TR">Turkish</option>
-                    <option value="UK">Ukranian</option>
-                    <option value="UR">Urdu</option>
-                    <option value="UZ">Uzbek</option>
-                    <option value="VI">Vietnamese</option>
-                    <option value="CY">Welsh</option>
-                    <option value="XH">Xhosa</option>
-                </select>
-            </div>
+          
             <h2>Communication skills:</h2>
             <div class="col-xs-12" style="margin-bottom: 10px;">
-                <textarea class="form-control" name="communication-skills"></textarea>
+                <input class="form-control" name="communication-skills" id="communication">
             </div>
             <h2>Organisational / managerial skills:</h2>
             <div class="col-xs-12" style="margin-bottom: 10px;">
-                <textarea class="form-control" name="organisational-skills"></textarea>
+                <input class="form-control" name="organisational-skills" id="organisational">
             </div>
-            <h2>Job-related skills:</h2>
-            <div class="col-xs-12" style="margin-bottom: 10px;">
-                <textarea class="form-control" name="job-skills"></textarea>
-            </div>
+       
             <h2>Digital competence:</h2>
             <div class="col-xs-12" style="margin-bottom: 10px;">
-                <textarea class="form-control" name="digital-competence"></textarea>
+                <textarea class="form-control" name="digital-competence" id="computer"></textarea>
             </div>
-            <button type="submit" class="btn btn-default"  onclick="submitForm()">Submit</button>
+            <button type="button" class="btn btn-default"  onclick="submitForm()">Submit</button>
 
         </div>
     </form>

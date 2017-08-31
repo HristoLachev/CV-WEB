@@ -12,6 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -31,12 +34,13 @@ public class UploadController {
 	}
 
 	@PostMapping("/upload")
-	public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+	@ResponseBody
+	public SkillsPassport handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 		if (!file.getContentType().contains("xml")) {
 			redirectAttributes.addFlashAttribute("message",
 					"File: " + file.getOriginalFilename() + " must be a xml file!");
 
-			return "redirect:/upload";
+			//return "redirect:/upload";
 		}
 
 		SkillsPassport passport = null;
@@ -52,6 +56,6 @@ public class UploadController {
 
 		String passportInJSON = XMLGregorianCalendarConverter.getGson().toJson(passport);
 		redirectAttributes.addFlashAttribute("file", passportInJSON);
-		return "redirect:/";
+		return passport;
 	}
 }

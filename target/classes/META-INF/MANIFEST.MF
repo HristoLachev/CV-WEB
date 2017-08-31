@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: CV-WEB
 Implementation-Version: 0.1.0
-Built-By: hlachev
+Built-By: 32043
 Implementation-Vendor-Id: CV-WEB
-Build-Jdk: 1.8.0_121
+Build-Jdk: 1.8.0_131
 Implementation-URL: http://projects.spring.io/spring-boot/CV-WEB/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
