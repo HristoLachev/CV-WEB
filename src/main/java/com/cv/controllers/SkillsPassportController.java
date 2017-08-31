@@ -21,11 +21,10 @@ public class SkillsPassportController {
 
 	@PostMapping(value = "/passport", produces = "application/json")
 	@ResponseBody
-	public String getPassport(@RequestBody String event) throws IOException {
+	public SkillsPassport getPassport(@RequestBody String event) throws IOException {
 		Gson gson = XMLGregorianCalendarConverter.getGson();
 		SkillsPassport skillsPassport = gson.fromJson(event, SkillsPassport.class);
-		String passportInJSON = gson.toJson(skillsPassport);
-		return passportInJSON;
+		return skillsPassport;
 
 	}
 
