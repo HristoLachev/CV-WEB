@@ -1,10 +1,835 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head> 
-    <title>Getting Started: Serving Web Content</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!DOCTYPE html>
+<html lang="en">
+<!-- Latest compiled and minified CSS -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type='text/javascript' src='script.js'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        var defaultData = {
+            "learnerInfo": {
+                "identification": {
+                    "personName": {
+                        "title": null,
+                        "firstName": "Betty",
+                        "surname": "Smith"
+                    },
+                    "contactInfo": {
+                        "address": {
+                            "contact": {
+                                "addressLine": "32 Reading rd",
+                                "addressLine2": null,
+                                "postalCode": "B26 3QJ",
+                                "municipality": "Birmingham",
+                                "country": {
+                                    "code": "UK",
+                                    "label": "United Kingdom"
+                                }
+                            }
+                        },
+                        "email": {
+                            "contact": "smith@kotmail.com"
+                        },
+                        "telephoneList": {
+                            "telephone": [
+                                {
+                                    "contact": "+44 2012345679",
+                                    "use": {
+                                        "code": "home",
+                                        "label": "Home"
+                                    }
+                                },
+                                {
+                                    "contact": "+44 7123456789",
+                                    "use": {
+                                        "code": "mobile",
+                                        "label": "Mobile"
+                                    }
+                                }
+                            ]
+                        },
+                        "websiteList": null,
+                        "instantMessagingList": {
+                            "instantMessaging": [
+                                {
+                                    "contact": "betty.smith",
+                                    "use": {
+                                        "code": "aim",
+                                        "label": "AOL Instant Messenger (AIM)"
+                                    }
+                                }
+                            ]
+                        },
+                        "contactMethodList": null
+                    },
+                    "demographics": {
+                        "birthdate": {
+                            "day": -7200000,
+                            "month": 5090400000,
+                            "year": 157759200000
+                        },
+                        "gender": {
+                            "code": "F",
+                            "label": "Female"
+                        },
+                        "nationalityList": null
+                    },
+                    "photo": {
+                        "name": null,
+                        "mimeType": "IMAGE_JPEG",
+                        "data": "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",
+                        "metadataList": {
+                            "metadata": [
+                                {
+                                    "key": "dimension",
+                                    "value": "591x608"
+                                },
+                                {
+                                    "key": "number-of-pages",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "signature": null
+                },
+                "headline": {
+                    "type": {
+                        "code": "job_applied_for",
+                        "label": "JOB APPLIED FOR"
+                    },
+                    "description": {
+                        "code": null,
+                        "label": "European project manager"
+                    }
+                },
+                "workExperienceList": {
+                    "workExperience": [
+                        {
+                            "period": {
+                                "from": {
+                                    "day": null,
+                                    "month": 18309600000,
+                                    "year": 1009836000000
+                                },
+                                "to": null,
+                                "current": true,
+                                "duration": null,
+                                "durationEquivalent": null
+                            },
+                            "description": null,
+                            "documentation": null,
+                            "position": {
+                                "code": null,
+                                "label": "Independent consultant"
+                            },
+                            "activities": "\nEvaluation of European Commission youth training support measures for youth national agencies and young people\n",
+                            "employer": {
+                                "name": "British Council",
+                                "contactInfo": {
+                                    "address": {
+                                        "contact": {
+                                            "addressLine": "123, Bd Ney",
+                                            "addressLine2": null,
+                                            "postalCode": "75023",
+                                            "municipality": "Paris",
+                                            "country": {
+                                                "code": "FR",
+                                                "label": "France"
+                                            }
+                                        }
+                                    },
+                                    "website": null
+                                },
+                                "sector": null
+                            }
+                        },
+                        {
+                            "period": {
+                                "from": {
+                                    "day": null,
+                                    "month": 5090400000,
+                                    "year": 1009836000000
+                                },
+                                "to": {
+                                    "day": null,
+                                    "month": 15631200000,
+                                    "year": 1009836000000
+                                },
+                                "current": false,
+                                "duration": null,
+                                "durationEquivalent": null
+                            },
+                            "description": null,
+                            "documentation": null,
+                            "position": {
+                                "code": null,
+                                "label": "Internship"
+                            },
+                            "activities": "\n- evaluating youth training programmes for SALTO UK and the partnership between the Council of Europe and European Commission - organizing and running a 2 day workshop on non-formal education for Action 5 large scale projects focusing on quality, assessment and recognition - contributing to the steering sroup on training and developing action plans on training for the next 3 years. Working on the Users Guide for training and the support measures\n",
+                            "employer": {
+                                "name": "\nEuropean Commission, Youth Unit, DG Education and Culture\n",
+                                "contactInfo": {
+                                    "address": {
+                                        "contact": {
+                                            "addressLine": "200, Rue de la Loi",
+                                            "addressLine2": null,
+                                            "postalCode": "1049",
+                                            "municipality": "Brussels",
+                                            "country": {
+                                                "code": "BE",
+                                                "label": "Belgium"
+                                            }
+                                        }
+                                    },
+                                    "website": null
+                                },
+                                "sector": {
+                                    "code": null,
+                                    "label": "European institution"
+                                }
+                            }
+                        },
+                        {
+                            "period": {
+                                "from": {
+                                    "day": null,
+                                    "month": 23580000000,
+                                    "year": 978300000000
+                                },
+                                "to": {
+                                    "day": null,
+                                    "month": 2671200000,
+                                    "year": 1009836000000
+                                },
+                                "current": false,
+                                "duration": null,
+                                "durationEquivalent": null
+                            },
+                            "description": null,
+                            "documentation": null,
+                            "position": {
+                                "code": null,
+                                "label": "Researcher / Independent Consultant"
+                            },
+                            "activities": "\nWorking in a research team carrying out in-depth qualitative evaluation of the 2 year Advanced Training of Trainers in Europe using participant observations, in-depth interviews and focus groups. Work carried out in training courses in Strasbourg, Slovenia and Budapest.\n",
+                            "employer": {
+                                "name": "Council of Europe",
+                                "contactInfo": {
+                                    "address": {
+                                        "contact": {
+                                            "addressLine": null,
+                                            "addressLine2": null,
+                                            "postalCode": null,
+                                            "municipality": "Budapest",
+                                            "country": {
+                                                "code": "HU",
+                                                "label": "Hungary"
+                                            }
+                                        }
+                                    },
+                                    "website": null
+                                },
+                                "sector": null
+                            }
+                        }
+                    ]
+                },
+                "educationList": {
+                    "education": [
+                        {
+                            "period": {
+                                "from": {
+                                    "day": null,
+                                    "month": null,
+                                    "year": 852069600000
+                                },
+                                "to": {
+                                    "day": null,
+                                    "month": null,
+                                    "year": 978300000000
+                                },
+                                "current": false,
+                                "duration": null,
+                                "durationEquivalent": null
+                            },
+                            "description": null,
+                            "documentation": null,
+                            "title": "\nPhD - Thesis Title: 'Young People in the Construction of the Virtual University’, Empirical research on e-learning\n",
+                            "activities": null,
+                            "organisation": {
+                                "name": "Brunel University",
+                                "contactInfo": {
+                                    "address": {
+                                        "contact": {
+                                            "addressLine": null,
+                                            "addressLine2": null,
+                                            "postalCode": null,
+                                            "municipality": "London",
+                                            "country": {
+                                                "code": "UK",
+                                                "label": "United Kingdom"
+                                            }
+                                        }
+                                    },
+                                    "website": null
+                                }
+                            },
+                            "level": null,
+                            "field": null
+                        },
+                        {
+                            "period": {
+                                "from": {
+                                    "day": null,
+                                    "month": null,
+                                    "year": 725839200000
+                                },
+                                "to": {
+                                    "day": null,
+                                    "month": null,
+                                    "year": 852069600000
+                                },
+                                "current": false,
+                                "duration": null,
+                                "durationEquivalent": null
+                            },
+                            "description": null,
+                            "documentation": null,
+                            "title": "Bachelor of Science in Sociology and Psychology",
+                            "activities": [
+                                "\n- sociology of risk - sociology of scientific knowledge / information society - anthropology E-learning and Psychology - research methods\n"
+                            ],
+                            "organisation": {
+                                "name": "Brunel University",
+                                "contactInfo": {
+                                    "address": {
+                                        "contact": {
+                                            "addressLine": null,
+                                            "addressLine2": null,
+                                            "postalCode": null,
+                                            "municipality": "London",
+                                            "country": {
+                                                "code": "UK",
+                                                "label": "United Kingdom"
+                                            }
+                                        }
+                                    },
+                                    "website": null
+                                }
+                            },
+                            "level": null,
+                            "field": null
+                        }
+                    ]
+                },
+                "skills": {
+                    "linguistic": {
+                        "motherTongueList": {
+                            "motherTongue": [
+                                {
+                                    "description": {
+                                        "code": "en",
+                                        "label": "English"
+                                    }
+                                }
+                            ]
+                        },
+                        "foreignLanguageList": {
+                            "foreignLanguage": [
+                                {
+                                    "description": {
+                                        "code": "fr",
+                                        "label": "French"
+                                    },
+                                    "proficiencyLevel": {
+                                        "listening": "C1",
+                                        "reading": "C2",
+                                        "spokenInteraction": "B2",
+                                        "spokenProduction": "C1",
+                                        "writing": "C2"
+                                    },
+                                    "acquiredDuring": null,
+                                    "verifiedBy": {
+                                        "certificate": [
+                                            {
+                                                "title": "Dalf C1",
+                                                "awardingBody": null,
+                                                "date": null,
+                                                "level": null
+                                            }
+                                        ]
+                                    },
+                                    "documentation": null
+                                },
+                                {
+                                    "description": {
+                                        "code": "de",
+                                        "label": "German"
+                                    },
+                                    "proficiencyLevel": {
+                                        "listening": "A2",
+                                        "reading": "A2",
+                                        "spokenInteraction": "A2",
+                                        "spokenProduction": "A2",
+                                        "writing": "A2"
+                                    },
+                                    "acquiredDuring": null,
+                                    "verifiedBy": {
+                                        "certificate": [
+                                            {
+                                                "title": "Zertifikat (A2)",
+                                                "awardingBody": null,
+                                                "date": null,
+                                                "level": null
+                                            }
+                                        ]
+                                    },
+                                    "documentation": null
+                                }
+                            ]
+                        }
+                    },
+                    "communication": {
+                        "description": "\n- team work: I have worked in various types of teams from research teams to national league hockey. For 2 years I coached my university hockey team - mediating skills: I work on the borders between young people, youth trainers, youth policy and researchers, for example running a 3 day workshop at CoE Symposium ‘Youth Actor of Social Change’, and my continued work on youth training programmes - intercultural skills: I am experienced at working in a European dimension such as being a rapporteur at the CoE Budapest ‘youth against violence seminar’ and working with refugees.\n",
+                        "proficiencyLevel": null,
+                        "acquiredDuring": null,
+                        "verifiedBy": null,
+                        "documentation": null
+                    },
+                    "organisational": {
+                        "description": "\n- whilst working for a Brussels based refugee NGO ‘Convivial’ I organized a ‘Civil Dialogue’ between refugees and civil servants at the European Commission 20th June 2002 - during my PhD I organised a seminar series on research methods\n",
+                        "proficiencyLevel": null,
+                        "acquiredDuring": null,
+                        "verifiedBy": null,
+                        "documentation": null
+                    },
+                    "jobRelated": null,
+                    "computer": {
+                        "description": "\n- competent with most Microsoft Office programmes - experience with HTML\n",
+                        "proficiencyLevel": null,
+                        "acquiredDuring": null,
+                        "verifiedBy": null,
+                        "documentation": null
+                    },
+                    "driving": {
+                        "description": [
+                            {
+                                "licence": "B"
+                            }
+                        ]
+                    },
+                    "other": {
+                        "description": "\nCreating pieces of Art and visiting Modern Art galleries. Enjoy all sports particularly hockey, football and running. Love to travel and experience different cultures.\n",
+                        "proficiencyLevel": null,
+                        "acquiredDuring": null,
+                        "verifiedBy": null,
+                        "documentation": null
+                    }
+                },
+                "achievementList": {
+                    "achievement": [
+                        {
+                            "title": {
+                                "code": "publications",
+                                "label": "Publications"
+                            },
+                            "description": "\n‘How to do Observations: Borrowing techniques from the Social Sciences to help Participants do Observations in Simulation Exercises’ Coyote EU/CoE Partnership Publication, (2002).\n",
+                            "documentation": null
+                        }
+                    ]
+                },
+                "documentation": null
+            },
+            "attachmentList": null,
+            "coverLetter": null,
+            "locale": "en"
+        };
+        window.onload = function () {
+            addOptionsToDays();
+            addOptionsToMonth();
+            let workPlaceList = defaultData.learnerInfo.workExperienceList.workExperience;
+            for (let i = 0 ; i < workPlaceList.length; i++) {
+                createWorkplaceForm(workPlaceList[i], i);
+            }
+            let educationList = defaultData.learnerInfo.educationList.education;
+            for (let i = 0 ; i < educationList.length; i++) {
+                createEducationForm(educationList[i], i);
+            }
+            //let motherTongueList = defaultData.learnerInfo.skills.linguistic.linguistic.motherTongue;
+
+            addValueTOFields();
+        };
+
+        let addValueTOFields = function() {
+            let firstNameInput = document.getElementById('first-name');
+            firstNameInput.value = defaultData.learnerInfo.identification.personName.firstName;
+            document.getElementById('surname').value = defaultData.learnerInfo.identification.personName.surname;
+            document.getElementById('address').value = defaultData.learnerInfo.identification.contactInfo.address.contact.addressLine;
+            document.getElementById('postcode').value = defaultData.learnerInfo.identification.contactInfo.address.contact.postalCode;
+            document.getElementById('city').value = defaultData.learnerInfo.identification.contactInfo.address.contact.municipality;
+            document.getElementById('countryLabel').value = defaultData.learnerInfo.identification.contactInfo.address.contact.country.label;
+            document.getElementById('countryCode').value = defaultData.learnerInfo.identification.contactInfo.address.contact.country.code;
+            document.getElementById('number').value = defaultData.learnerInfo.identification.contactInfo.telephoneList.telephone[0].contact;
+            document.getElementById('email').value = defaultData.learnerInfo.identification.contactInfo.email.contact;
+            document.getElementById('application-type').value = defaultData.learnerInfo.headline.type.code;
+            document.getElementById('type-description').value = defaultData.learnerInfo.headline.description.label;
+            //document.getElementById('mother-tongue').value = defaultData.learnerInfo.skills.linguistic.linguistic.motherTongue;
+        };
+
+        let submitForm = function() {
+                
+              $.ajax({
+                type : "post",
+                contentType : "application/json; charset=utf-8",
+                url : "passport",
+                data : JSON.stringify({file: defaultData}),
+                dataType : 'json',
+                timeout : 100000,
+                success : function(data) {
+                    console.log("SUCCESS: ", data);
+
+                },
+                error : function(e) {
+                    console.log("ERROR: ", e);
+                },
+                done : function(e) {
+                    console.log("DONE");
+                }
+            });
+           // getAllWorplaces();
+//            defaultData.learnerInfo.identification.personName.surname = document.getElementById('surname').value;
+//            defaultData.learnerInfo.identification.contactInfo.address.contact.addressLine = document.getElementById('address').value;
+//            defaultData.learnerInfo.identification.contactInfo.address.contact.postalCode =  document.getElementById('postcode').value;
+//            defaultData.learnerInfo.identification.contactInfo.address.contact.municipality = document.getElementById('city').value;
+//            defaultData.learnerInfo.identification.contactInfo.address.contact.country.label = document.getElementById('countryLabel').value;
+//            defaultData.learnerInfo.identification.contactInfo.address.contact.country.code = document.getElementById('countryCode').value;
+//            defaultData.learnerInfo.identification.contactInfo.telephoneList.telephone[0].contact =  document.getElementById('number').value;
+//            defaultData.learnerInfo.identification.contactInfo.email.contact = document.getElementById('email').value;
+//            defaultData.learnerInfo.headline.type.code = document.getElementById('application-type').value;
+//            defaultData.learnerInfo.headline.description.label = document.getElementById('type-description').value;
+            //defaultData.learnerInfo.skills.linguistic.linguistic.motherTongue = document.getElementById('mother-tongue').value;
+
+//            console.log(defaultData);
+        };
+
+        let getAllWorplaces = function() {
+            let workPlaces = document.getElementsByName('workplace-form');
+            console.dir(workPlaces);
+            console.log(workPlaces[0].employeeName);
+
+        };
+
+        let addOptionsToDays = function () {
+            let selectElement = $('.day-from');
+            let selectElementTo = $('.day-to');
+            for (let i = 1; i <= 31; i++) {
+                let optionElement = '<option value="' + i + '">' + i + '</option>';
+                selectElement.append(optionElement);
+                selectElementTo.append(optionElement);
+            }
+        };
+
+        let addOptionsToMonth = function () {
+            let selectElement = $('.month-from');
+            let selectElementTo = $('.month-to');
+            for (let i = 1; i <= 12; i++) {
+                let optionElement = '<option value="' + i + '">' + i + '</option>';
+                selectElement.append(optionElement);
+                selectElementTo.append(optionElement);
+            }
+        };
+
+        let createWorkplaceForm = function (workPlace, index) {
+            let workPlaceContainer = $('#work-experience');
+            let form = `<div class="work-place-wrapper clearfix" style="border-bottom: 1px solid grey; margin-bottom: 10px;" id="workplace-${{index}}">
+                <h3>From:</h3>
+                <div class="form-group col-xs-4" >
+                    <label for="day-from">Day:</label>
+                    <select class="form-control day-from" name="day-from"></select>
+                </div>
+                <div class="form-group col-xs-4" >
+                    <label for="month-from">Month:</label>
+                    <select class="form-control month-from" name="month-from"></select>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label for="year-from">Year:</label>
+                    <input type="text" class="form-control" name="year-from">
+                </div>
+                <h3>To:</h3>
+                <div class="form-group col-xs-4" >
+                    <label>Day:</label>
+                    <select class="form-control day-to" name="day-to"></select>
+                </div>
+                <div class="form-group col-xs-4" >
+                    <label for="month-from">Month:</label>
+                    <select class="form-control month-to" name="month-to"></select>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>Year:</label>
+                    <input type="text" class="form-control" name="year-to">
+                </div>
+                <h3>Occupation:</h3>
+                <h4>Employee:</h4>
+                 <div class="form-group col-xs-4">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" name="employeeName" value="${workPlace ? workPlace.employer.name : ''}">
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>City:</label>
+                    <input type="text" class="form-control" name="employee-city" value="${workPlace ? workPlace.employer.contactInfo.address.contact.municipality : ''}">
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>Country:</label>
+                    <input type="text" class="form-control" name="employee-country" value="${workPlace ? workPlace.employer.contactInfo.address.contact.country.label : ''}">
+                </div>
+                <h3>Main activities:</h3>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                    <textarea class="form-control" name="work-description">${workPlace ? workPlace.activities : ''}</textarea>
+                </div>
+            </div>`;
+            workPlaceContainer.append(form);
+            addOptionsToDays();
+            addOptionsToMonth();
+        };
+        let createEducationForm = function (education, index) {
+            let educationContainer = $('#education');
+            let form = `<div class="work-place-wrapper clearfix" name="workplace-form" style="border-bottom: 1px solid grey; margin-bottom: 10px;" id="education-${{index}}">
+                <h3>From:</h3>
+                <div class="form-group col-xs-4" >
+                    <label for="day-from">Day:</label>
+                    <select class="form-control day-from" name="day-from-education"></select>
+                </div>
+                <div class="form-group col-xs-4" >
+                    <label for="month-from">Month:</label>
+                    <select class="form-control month-from" name="month-from-education"></select>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label for="year-from">Year:</label>
+                    <input type="text" class="form-control" name="year-from-education">
+                </div>
+                <h3>To:</h3>
+                <div class="form-group col-xs-4" >
+                    <label>Day:</label>
+                    <select class="form-control day-to" name="day-to-education"></select>
+                </div>
+                <div class="form-group col-xs-4" >
+                    <label for="month-from">Month:</label>
+                    <select class="form-control month-to" name="month-to-education"></select>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>Year:</label>
+                    <input type="text" class="form-control" name="year-to-education">
+                </div>
+                <div class="form-group col-xs-12">
+                    <label>Title of qualification awarded:</label>
+                    <input type="text" class="form-control" name="qualification-title" value="${education.title}">
+                </div>
+                <h3>Organization:</h3>
+                 <div class="form-group col-xs-4">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" name="organization-name" value="${education.organisation.name}">
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>City:</label>
+                    <input type="text" class="form-control" name="organization-city" value="${education.organisation.contactInfo.address.contact.municipality}">
+                </div>
+                <div class="form-group col-xs-4">
+                    <label>Country:</label>
+                    <input type="text" class="form-control" name="organization-country" value="${education.organisation.contactInfo.address.contact.country.label}">
+                </div>
+                <h3>Main subject / occupation skills covered:</h3>
+                <div class="col-xs-12" style="margin-bottom: 10px;">
+                    <textarea class="form-control" name="main-subject-education">${education.activities || ''}</textarea>
+                </div>
+            </div>`;
+            educationContainer.append(form);
+            addOptionsToDays();
+            addOptionsToMonth();
+        };
+
+//        let submitForm = function() {
+//            let form = document.getElementById('form');
+//            console.log(form);
+//        };
+    </script>
 </head>
+
 <body>
-    <p th:text="'Hello, ' + ${name} + '!'" />
+
+<div class="container">
+    <form id="form" method="POST">
+        <div class="row">
+            <h2>Personal information</h2>
+            <div class="form-group col-xs-12">
+                <label for="first-name">First name:</label>
+                <input type="text" name="firstName" class="form-control" id="first-name">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="surname">Surname:</label>
+                <input type="text" class="form-control" id="surname">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address">
+            </div>
+            <div class="form-group col-xs-4">
+                <label for="postcode">Postcode:</label>
+                <input type="text" class="form-control" id="postcode">
+            </div>
+            <div class="form-group col-xs-8">
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city">
+            </div>
+            <div class="form-group col-xs-4">
+                <label for="countryCode">Country code:</label>
+                <input type="text" class="form-control" id="countryCode">
+            </div>
+            <div class="form-group col-xs-8">
+                <label for="countryLabel">Country:</label>
+                <input type="text" class="form-control" id="countryLabel">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="number">Number:</label>
+                <input type="text" class="form-control" id="number">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <h2>Type of application</h2>
+            <div class="form-group col-xs-12">
+                <label for="application-type">Type of application:</label>
+                <select class="form-control" name="application-type" id="application-type">
+                    <option value="job_applied_for">Job applied for</option>
+                    <option value="position">Position</option>
+                    <option value="preferred_job">Preferred job</option>
+                    <option value="studies">Studies applied for</option>
+                    <option value="personal_statement">Personal statement</option>
+                </select>
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="type-description">Type of application description:</label>
+                <input type="text" class="form-control" id="type-description">
+            </div>
+            <h2>Work experience</h2>
+            <div id="work-experience"></div>
+            <button type="button" onclick="createWorkplaceForm()" class="btn btn-default">Add workplace</button>
+            <h2>Education</h2>
+            <div id="education"></div>
+            <button type="button" onclick="createEducationForm()" class="btn btn-default">Add education</button>
+            <h2>Personal skills</h2>
+            <div class="form-group col-xs-12">
+                <label for="mother-tongue">Mother tongue:</label>
+                <input type="text" class="form-control" id="mother-tongue">
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="other-languages">Other languages:</label>
+                <select class="form-control" id="other-languages" multiple>
+                    <option value="AF">Afrikanns</option>
+                    <option value="SQ">Albanian</option>
+                    <option value="AR">Arabic</option>
+                    <option value="HY">Armenian</option>
+                    <option value="EU">Basque</option>
+                    <option value="BN">Bengali</option>
+                    <option value="BG">Bulgarian</option>
+                    <option value="CA">Catalan</option>
+                    <option value="KM">Cambodian</option>
+                    <option value="ZH">Chinese (Mandarin)</option>
+                    <option value="HR">Croation</option>
+                    <option value="CS">Czech</option>
+                    <option value="DA">Danish</option>
+                    <option value="NL">Dutch</option>
+                    <option value="EN">English</option>
+                    <option value="ET">Estonian</option>
+                    <option value="FJ">Fiji</option>
+                    <option value="FI">Finnish</option>
+                    <option value="FR">French</option>
+                    <option value="KA">Georgian</option>
+                    <option value="DE">German</option>
+                    <option value="EL">Greek</option>
+                    <option value="GU">Gujarati</option>
+                    <option value="HE">Hebrew</option>
+                    <option value="HI">Hindi</option>
+                    <option value="HU">Hungarian</option>
+                    <option value="IS">Icelandic</option>
+                    <option value="ID">Indonesian</option>
+                    <option value="GA">Irish</option>
+                    <option value="IT">Italian</option>
+                    <option value="JA">Japanese</option>
+                    <option value="JW">Javanese</option>
+                    <option value="KO">Korean</option>
+                    <option value="LA">Latin</option>
+                    <option value="LV">Latvian</option>
+                    <option value="LT">Lithuanian</option>
+                    <option value="MK">Macedonian</option>
+                    <option value="MS">Malay</option>
+                    <option value="ML">Malayalam</option>
+                    <option value="MT">Maltese</option>
+                    <option value="MI">Maori</option>
+                    <option value="MR">Marathi</option>
+                    <option value="MN">Mongolian</option>
+                    <option value="NE">Nepali</option>
+                    <option value="NO">Norwegian</option>
+                    <option value="FA">Persian</option>
+                    <option value="PL">Polish</option>
+                    <option value="PT">Portuguese</option>
+                    <option value="PA">Punjabi</option>
+                    <option value="QU">Quechua</option>
+                    <option value="RO">Romanian</option>
+                    <option value="RU">Russian</option>
+                    <option value="SM">Samoan</option>
+                    <option value="SR">Serbian</option>
+                    <option value="SK">Slovak</option>
+                    <option value="SL">Slovenian</option>
+                    <option value="ES">Spanish</option>
+                    <option value="SW">Swahili</option>
+                    <option value="SV">Swedish </option>
+                    <option value="TA">Tamil</option>
+                    <option value="TT">Tatar</option>
+                    <option value="TE">Telugu</option>
+                    <option value="TH">Thai</option>
+                    <option value="BO">Tibetan</option>
+                    <option value="TO">Tonga</option>
+                    <option value="TR">Turkish</option>
+                    <option value="UK">Ukranian</option>
+                    <option value="UR">Urdu</option>
+                    <option value="UZ">Uzbek</option>
+                    <option value="VI">Vietnamese</option>
+                    <option value="CY">Welsh</option>
+                    <option value="XH">Xhosa</option>
+                </select>
+            </div>
+            <h2>Communication skills:</h2>
+            <div class="col-xs-12" style="margin-bottom: 10px;">
+                <textarea class="form-control" name="communication-skills"></textarea>
+            </div>
+            <h2>Organisational / managerial skills:</h2>
+            <div class="col-xs-12" style="margin-bottom: 10px;">
+                <textarea class="form-control" name="organisational-skills"></textarea>
+            </div>
+            <h2>Job-related skills:</h2>
+            <div class="col-xs-12" style="margin-bottom: 10px;">
+                <textarea class="form-control" name="job-skills"></textarea>
+            </div>
+            <h2>Digital competence:</h2>
+            <div class="col-xs-12" style="margin-bottom: 10px;">
+                <textarea class="form-control" name="digital-competence"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default"  onclick="submitForm()">Submit</button>
+
+        </div>
+    </form>
+</div>
+
+
 </body>
 </html>

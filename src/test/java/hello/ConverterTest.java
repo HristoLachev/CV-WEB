@@ -6,8 +6,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.CharsetEncoder;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.jsoup.Jsoup;
@@ -23,9 +27,11 @@ import com.cv.model.xml.IdentificationType;
 import com.cv.model.xml.LearnerInfoType;
 import com.cv.model.xml.PersonNameType;
 import com.cv.model.xml.SkillsPassport;
+import com.cv.serializers.XMLGregorianCalendarConverter;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:ConverterTest-context.xml")
@@ -93,6 +99,27 @@ public class ConverterTest {
 
 		converter.marshallEuroPassXML(passport, System.out);
 		converter.marshallEuroPassXML(passport, outputFile);
+
+		Thread.sleep(3000);
+	}
+
+	@Test
+	public void jsonToSkillsPassport() throws JAXBException, InterruptedException, IOException {
+
+		File x = new File("src/test/resources/cv1.xml");
+		SkillsPassport passport = converter.unmarshallEuroPassXML(new FileInputStream(x));
+		String firstName = passport.getLearnerInfo().getIdentification().getPersonName().getFirstName();
+		assertEquals("Betty", firstName);
+		System.out.println(passport);
+
+		Gson gson = XMLGregorianCalendarConverter.getGson();
+
+		String passportInJSON = gson.toJson(passport);
+		System.out.println(passportInJSON);
+
+		SkillsPassport skillsPassport = gson.fromJson(passportInJSON, SkillsPassport.class);
+
+		System.out.println(skillsPassport);
 
 		Thread.sleep(3000);
 	}
